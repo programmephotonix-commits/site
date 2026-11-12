@@ -5,9 +5,16 @@
 <link rel="alternate" hreflang="fr" href="https://photonix.fr/">
 <link rel="alternate" hreflang="en" href="https://photonix.fr/en/">
 <meta name="theme-color" content="#071C4E">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="PHOTONIX">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="PHOTONIX, a research programme: a column in which a blue laser passes through three quartz discs. For manufacturers and laboratories.">
-<style>body{margin:0}img,video{max-width:100%}</style>
+<style>body{margin:0;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img,video{max-width:100%}</style>
 <title>PHOTONIX – Research programme</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Montserrat:wght@300;400;500&display=swap">
 <style>
@@ -504,6 +511,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--or-photonix); o
   b.addEventListener('click', function () { d.showModal(); });
   d.addEventListener('click', function () { d.close(); });
 })();
+if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('../sw.js').catch(function () {}); }); }
 </script>
 </body>
 </html>
