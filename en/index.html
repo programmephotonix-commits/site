@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="alternate" hreflang="fr" href="https://photonix.fr/">
+<link rel="alternate" hreflang="en" href="https://photonix.fr/en/">
+<meta name="theme-color" content="#071C4E">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="PHOTONIX, a research programme: a column in which a blue laser passes through three quartz discs. For manufacturers and laboratories.">
+<style>body{margin:0}img,video{max-width:100%}</style>
+<title>PHOTONIX – Research programme</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Montserrat:wght@300;400;500&display=swap">
+<style>
+/* Mise en page : la nuit d'abord. Un seul objet (la colonne) au tiers droit, bloc texte en bas à gauche,
+   puis des sections calmes sur une colonne de lecture, séparées par un filet. Angles nets. */
+:root {
+  color-scheme: dark;
+  --logo-fond: #FFFFFF;
+  --noir-profond: #071C4E;
+  --nuit-bleue: #051540;
+  --bleu-abysse: #10357F;
+  --bleu-marque: #E4E9F7;
+  --or-photonix: #D5B668;
+  --texte: #DADEEC;
+  --texte-discret: #A9B3D3;
+  --filet: #25428C;
+  --trait: #5E78BD;
+  --laser-profond: #1C49C8;
+  --laser: #6A97FF;
+  --laser-coeur: #DCE7FF;
+  --halo-laser: 0 0 24px rgba(48, 96, 208, 0.55);
+  --tube-opacite: 0.9;
+  --display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --sans: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --e1: 4px; --e2: 8px; --e3: 16px; --e4: 32px; --e5: 64px;
+}
+
+body {
+  background: var(--noir-profond);
+  color: var(--texte);
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.cadre {
+  max-width: 1080px;
+  margin-inline: auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+
+/* Ouverture */
+.ouverture .langues .cadre { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding-block: 18px 0; font-size: 12px; font-weight: 500; letter-spacing: 0.2em; color: var(--texte-discret); }
+.langues a { color: var(--texte-discret); text-decoration: none; border-bottom: 1px solid var(--trait); padding-bottom: 2px; }
+.langues a:hover { color: var(--texte); }
+.langues .choix { display: flex; align-items: center; gap: 10px; }
+.langues a.logo { display: block; line-height: 0; padding: 0; border: 0; margin-left: -20px; }
+.langues a.logo img { display: block; height: clamp(110px, 14vw, 152px); width: auto; aspect-ratio: 1; }
+.langues [aria-current] { color: var(--or-photonix); }
+.ouverture {
+  background: radial-gradient(60% 70% at 72% 45%, var(--bleu-abysse), transparent 70%);
+}
+.ouverture .cadre {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: var(--e4);
+  align-items: center;
+  padding-block: var(--e4) var(--e5);
+}
+.marque {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(40px, 8vw, 72px);
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: var(--bleu-marque);
+  margin: 0 0 var(--e4);
+}
+.surtitre {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--or-photonix);
+  margin: 0;
+}
+.surtitre::after {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--or-photonix);
+  margin-top: var(--e1);
+}
+.titre-etape {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: clamp(24px, 2.5vw, 30px);
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--or-photonix);
+  text-wrap: balance;
+  margin: var(--e3) 0 var(--e2);
+}
+.titre-etape .bloc { display: inline-block; }
+.chapo { max-width: 52ch; margin: 0; }
+.schema { margin: 0; }
+.schema svg { display: block; width: 100%; max-width: 350px; height: auto; margin-inline: auto; }
+.schema figcaption {
+  font-size: 12px; font-weight: 400; line-height: 1.4;
+  color: var(--texte-discret); text-align: center; margin-top: var(--e3);
+}
+
+/* Schéma */
+.s-trait { fill: none; stroke: var(--trait); stroke-width: 1; }
+.s-piece { fill: var(--nuit-bleue); stroke: var(--trait); stroke-width: 1; }
+.s-tube { fill: var(--laser-profond); opacity: var(--tube-opacite); }
+.s-cone { fill: var(--laser); opacity: 0.55; }
+.s-coeur { stroke: var(--laser-coeur); stroke-width: 1.5; fill: none; filter: drop-shadow(0 0 6px rgba(48, 96, 208, 0.9)); }
+.s-disque { fill: var(--laser-coeur); fill-opacity: 0.22; stroke: var(--laser-coeur); stroke-width: 1; }
+.s-voyant { fill: var(--laser); filter: drop-shadow(0 0 5px rgba(48, 96, 208, 0.9)); }
+.s-rappel { fill: none; stroke: var(--texte-discret); stroke-width: 0.75; stroke-dasharray: 2 3; }
+.s-legende { fill: var(--texte-discret); font-family: var(--sans); font-size: 12px; font-weight: 400; }
+@media (prefers-reduced-motion: no-preference) {
+  .s-coeur { animation: souffle 6s ease-in-out infinite; }
+  @keyframes souffle { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+}
+
+/* Schéma v2 : volume, verre, lumière */
+:root { --piece-haut: #1B3A8C; --piece-bas: #041238; }
+.st-bord { stop-color: var(--laser-profond); stop-opacity: 0.95; }
+.st-centre { stop-color: var(--laser); stop-opacity: 0.5; }
+.st-cone-haut { stop-color: var(--laser-coeur); stop-opacity: 0.75; }
+.st-cone-bas { stop-color: var(--laser); stop-opacity: 0.4; }
+.st-eclat { stop-color: #FFFFFF; stop-opacity: 0.95; }
+.st-eclat-fin { stop-color: var(--laser-coeur); stop-opacity: 0; }
+.st-piece-haut { stop-color: var(--piece-haut); }
+.st-piece-bas { stop-color: var(--piece-bas); }
+.c-sol { fill: var(--laser); opacity: 0.45; }
+.c-aura { fill: var(--laser); opacity: 0.5; }
+.c-coeur { stroke: #FFFFFF; stroke-width: 1.6; opacity: 0.85; }
+.c-tranche { fill: var(--laser-coeur); fill-opacity: 0.22; stroke: var(--laser-coeur); stroke-width: 0.8; stroke-opacity: 0.7; }
+.c-face { fill: var(--laser-coeur); fill-opacity: 0.3; stroke: #FFFFFF; stroke-width: 1; stroke-opacity: 0.9; }
+.c-point { fill: #FFFFFF; }
+.c-reflet { stroke: #FFFFFF; stroke-width: 2; stroke-linecap: round; opacity: 0.32; }
+.c-reflet-fin { stroke-width: 1; opacity: 0.18; }
+.c-contour { fill: none; stroke: var(--laser-coeur); stroke-width: 1; stroke-opacity: 0.55; }
+.c-piece { stroke: var(--trait); stroke-width: 1; }
+.c-arete { stroke: #FFFFFF; stroke-width: 1; opacity: 0.22; }
+.c-ouie { fill: none; stroke: var(--trait); stroke-width: 1.5; stroke-linecap: round; }
+.c-voyant { fill: var(--laser-coeur); filter: drop-shadow(0 0 5px rgba(140, 180, 255, 0.95)); }
+.c-bague { fill: var(--piece-haut); stroke: var(--trait); stroke-width: 1; }
+.st-hublot-centre { stop-color: #F2A552; stop-opacity: 0.85; }
+.st-hublot-bord { stop-color: #A8520F; stop-opacity: 0.8; }
+.c-hublot { stroke: #F2B36A; stroke-width: 0.8; stroke-opacity: 0.6; }
+.c-poignee { fill: var(--trait); }
+.c-temoin { fill: #5BE08A; filter: drop-shadow(0 0 3px rgba(91, 224, 138, 0.9)); }
+.c-led { stroke: var(--laser-coeur); stroke-width: 1.4; stroke-linecap: round; filter: drop-shadow(0 0 4px rgba(140, 180, 255, 0.95)); }
+.c-montant { opacity: 0.85; }
+.c-nom { font-family: var(--display); font-weight: 600; font-size: 17px; letter-spacing: 0.22em; fill: var(--texte); fill-opacity: 0.8; }
+.c-pied { fill: var(--piece-bas); stroke: var(--trait); stroke-width: 1; }
+
+/* Détail du tube, à côté de la colonne */
+.ouverture .cadre { max-width: 1280px; }
+.detail { margin: 0; min-width: 0; }
+.loupe { all: unset; display: block; cursor: zoom-in; line-height: 0; background: #FAFAFA; border: 1px solid var(--filet); box-shadow: 0 0 24px rgba(48, 96, 208, 0.35); }
+.loupe img { display: block; width: 100%; height: auto; }
+.detail figcaption { font-size: 12px; font-weight: 400; line-height: 1.4; color: var(--texte-discret); text-align: center; margin-top: var(--e3); }
+dialog.zoom { border: 0; padding: 0; background: transparent; max-width: 96vw; max-height: 96vh; cursor: zoom-out; }
+dialog.zoom::backdrop { background: rgba(3, 10, 30, 0.88); }
+dialog.zoom img { display: block; max-width: 96vw; max-height: 94vh; width: auto; height: auto; background: #FAFAFA; }
+@media (min-width: 1000px) {
+  .ouverture > .cadre { grid-template-columns: minmax(0, 1fr) minmax(0, 0.78fr) minmax(0, 0.72fr); }
+}
+@media (min-width: 761px) and (max-width: 999px) {
+  .detail { grid-column: 1 / -1; max-width: 460px; margin-inline: auto; }
+}
+@media (max-width: 760px) {
+  .detail { max-width: 460px; margin-inline: auto; }
+}
+
+/* Sections */
+.section { border-top: 1px solid var(--filet); }
+.section .cadre {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: var(--e4);
+  padding-block: var(--e5);
+}
+.section h2 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.25;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--or-photonix);
+  text-wrap: balance;
+  margin: var(--e3) 0 0;
+}
+.contenu { display: flex; flex-direction: column; gap: var(--e3); min-width: 0; }
+.contenu p { margin: 0; max-width: 62ch; }
+
+.donnees { margin: var(--e3) 0 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: var(--e4); }
+.donnees dt, .donnees dd { margin: 0; padding-block: 10px; border-top: 1px solid var(--filet); }
+.donnees dt { font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texte-discret); padding-top: 13px; }
+.donnees dd { font-variant-numeric: tabular-nums; }
+
+.fonctions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--e4); margin-top: var(--e2); }
+.fonctions h3, .publics h3 {
+  font-family: var(--display); font-weight: 600; font-size: 17px; letter-spacing: 0.06em;
+  color: var(--texte); margin: 0 0 var(--e2);
+}
+.fonctions p, .publics p { font-size: 15px; }
+.fonctions > div { border-top: 1px solid var(--or-photonix); padding-top: var(--e3); }
+.publics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--e4); margin-top: var(--e2); }
+.publics > div { border-top: 1px solid var(--or-photonix); padding-top: var(--e3); }
+
+.film { display: block; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; background: var(--nuit-bleue); border: 1px solid var(--filet); }
+.note { font-size: 13px; font-weight: 400; color: var(--texte-discret); }
+
+/* Contact */
+.contact-nom { font-family: var(--display); font-weight: 600; font-size: 22px; letter-spacing: 0.06em; color: var(--texte); margin: 0; }
+.contact-role { font-size: 10px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--texte-discret); margin: var(--e1) 0 0; }
+.adresse { display: flex; flex-wrap: wrap; align-items: center; gap: var(--e3); margin-top: var(--e3); }
+.adresse span { font-size: 17px; font-weight: 400; color: var(--texte); user-select: all; overflow-wrap: anywhere; min-width: 0; }
+button {
+  font: 500 12px/1 var(--sans); letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--or-photonix); background: transparent; border: 1px solid var(--or-photonix);
+  border-radius: 0; padding: 12px 16px; cursor: pointer;
+}
+button:hover { background: var(--nuit-bleue); }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--or-photonix); outline-offset: 3px; }
+
+.pied { border-top: 1px solid var(--filet); }
+.pied .cadre {
+  padding-block: var(--e4);
+  font-size: 10px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--texte-discret);
+}
+
+@media (max-width: 760px) {
+  .ouverture .cadre, .section .cadre { grid-template-columns: minmax(0, 1fr); }
+  .ouverture .cadre { padding-block: var(--e4) var(--e5); }
+  .marque { margin-bottom: var(--e4); }
+  .section .cadre { gap: var(--e3); padding-block: 48px; }
+  .fonctions, .publics { grid-template-columns: minmax(0, 1fr); gap: var(--e3); }
+  .donnees { grid-template-columns: minmax(0, 1fr); }
+  .donnees dd { border-top: 0; padding-top: 0; }
+  .donnees dt { padding-bottom: 2px; }
+}
+</style>
+</head>
+<body>
+
+<header class="ouverture">
+  <div class="langues"><div class="cadre"><a class="logo" href="../"><img src="../logo-disques.png" alt="PHOTONIX" width="152" height="152"></a><nav class="choix" aria-label="Language"><a href="../" lang="fr" hreflang="fr">FR</a><span aria-hidden="true">·</span><span aria-current="true">EN</span></nav></div></div>
+  <div class="cadre">
+    <div>
+      <p class="marque">PHOTONIX</p>
+      <p class="surtitre">Research programme</p>
+      <h1 class="titre-etape"><span class="bloc">Photons through</span> <span class="bloc">programmed quartz discs</span></h1>
+      <p class="chapo">PHOTONIX is a column in which a blue laser passes through three quartz discs. The programme is intended for manufacturers and laboratories who wish to assess this process on their own formulations.</p>
+    </div>
+
+    <figure class="schema">
+      <svg viewBox="0 0 440 700" role="img" aria-labelledby="schema-titre">
+        <title id="schema-titre">Schematic of the PHOTONIX column: blue laser module at the top, glass tube holding the source disc and two quartz discs, product chamber closed by a door, base bearing the PHOTONIX name.</title>
+        <defs>
+          <linearGradient id="gTube" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0" class="st-bord"/><stop offset="0.5" class="st-centre"/><stop offset="1" class="st-bord"/>
+          </linearGradient>
+          <linearGradient id="gCone" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" class="st-cone-haut"/><stop offset="1" class="st-cone-bas"/>
+          </linearGradient>
+          <radialGradient id="gEclat"><stop offset="0" class="st-eclat"/><stop offset="1" class="st-eclat-fin"/></radialGradient>
+          <radialGradient id="gHublot" cx="0.5" cy="0.35" r="0.75"><stop offset="0" class="st-hublot-centre"/><stop offset="1" class="st-hublot-bord"/></radialGradient>
+          <linearGradient id="gPiece" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" class="st-piece-haut"/><stop offset="1" class="st-piece-bas"/>
+          </linearGradient>
+          <filter id="fLueur" x="-80%" y="-10%" width="260%" height="120%"><feGaussianBlur stdDeviation="8"/></filter>
+          <filter id="fSol" x="-30%" y="-200%" width="160%" height="500%"><feGaussianBlur stdDeviation="8"/></filter>
+          <clipPath id="cTube"><rect x="146" y="89.1" width="48" height="379.3"/></clipPath>
+        </defs>
+        <!-- lueur au sol -->
+        <ellipse class="c-sol" cx="170" cy="673" rx="125" ry="7" filter="url(#fSol)"/>
+        <!-- montant arrière -->
+        <rect class="c-piece c-montant" x="200" y="85.4" width="34" height="481.0" fill="url(#gPiece)"/>
+        <!-- lueur autour du tube -->
+        <rect class="c-aura" x="146" y="93.1" width="48" height="371.3" filter="url(#fLueur)"/>
+        <!-- tube éclairé -->
+        <rect x="146" y="89.1" width="48" height="379.3" fill="url(#gTube)"/>
+        <g clip-path="url(#cTube)">
+          <polygon points="170,89.1 194,271.9 194,468.4 146,468.4 146,271.9" fill="url(#gCone)"/>
+          <line class="c-coeur" x1="170" y1="89.1" x2="170" y2="468.4"/>
+        </g>
+        <g class="c-disque d0">
+          <path class="c-tranche" d="M148 133.5 a22 5 0 0 0 44 0 v4 a22 5 0 0 1 -44 0 z"/>
+          <ellipse class="c-face" cx="170" cy="133.5" rx="22" ry="5"/>
+          <ellipse class="c-eclat" cx="170" cy="133.5" rx="13" ry="3.2" fill="url(#gEclat)"/>
+          <ellipse class="c-point" cx="170" cy="133.5" rx="3.2" ry="1.1"/>
+        </g>
+        <g class="c-disque d1">
+          <path class="c-tranche" d="M148 253.8 a22 5 0 0 0 44 0 v4 a22 5 0 0 1 -44 0 z"/>
+          <ellipse class="c-face" cx="170" cy="253.8" rx="22" ry="5"/>
+          <ellipse class="c-eclat" cx="170" cy="253.8" rx="13" ry="3.2" fill="url(#gEclat)"/>
+          <ellipse class="c-point" cx="170" cy="253.8" rx="3.2" ry="1.1"/>
+        </g>
+        <g class="c-disque d2">
+          <path class="c-tranche" d="M148 348.1 a22 5 0 0 0 44 0 v4 a22 5 0 0 1 -44 0 z"/>
+          <ellipse class="c-face" cx="170" cy="348.1" rx="22" ry="5"/>
+          <ellipse class="c-eclat" cx="170" cy="348.1" rx="13" ry="3.2" fill="url(#gEclat)"/>
+          <ellipse class="c-point" cx="170" cy="348.1" rx="3.2" ry="1.1"/>
+        </g>
+        <!-- verre : reflets et contours -->
+        <line class="c-reflet" x1="151" y1="95.1" x2="151" y2="462.4"/>
+        <line class="c-reflet c-reflet-fin" x1="189" y1="95.1" x2="189" y2="462.4"/>
+        <rect class="c-contour" x="146" y="89.1" width="48" height="379.3"/>
+        <!-- tête laser -->
+        <rect class="c-piece" x="58" y="41.0" width="224" height="44.4" rx="3" fill="url(#gPiece)"/>
+        <line class="c-arete" x1="62" y1="43.0" x2="278" y2="43.0"/>
+        <line class="c-led" x1="96" y1="63.2" x2="244" y2="63.2"/>
+        <rect class="c-bague" x="124" y="85.4" width="92" height="5" rx="1.5"/>
+        <!-- enceinte du produit, porte et hublot -->
+        <rect class="c-piece" x="107" y="466.1" width="126" height="100.3" fill="url(#gPiece)"/>
+        <line class="c-arete" x1="110" y1="468.1" x2="230" y2="468.1"/>
+        <rect class="c-hublot" x="125" y="482.1" width="84" height="70.3" fill="url(#gHublot)"/>
+        <rect class="c-poignee" x="216" y="504.2" width="4" height="24" rx="2"/>
+        <circle class="c-temoin" cx="222" cy="476.1" r="2.2"/>
+        <!-- socle -->
+        <rect class="c-piece" x="59" y="566.4" width="222" height="92.5" rx="2" fill="url(#gPiece)"/>
+        <line class="c-arete" x1="63" y1="568.4" x2="277" y2="568.4"/>
+        <text class="c-nom" x="170" y="618.6" text-anchor="middle">PHOTONIX</text>
+        <rect class="c-pied" x="66" y="658.9" width="20" height="11.1" rx="2"/>
+        <rect class="c-pied" x="254" y="658.9" width="20" height="11.1" rx="2"/>
+        <!-- rappels -->
+        <path class="s-rappel" d="M282 63.2 H298 M192 133.5 H298 M194 192.7 H298 M192 253.8 H298 M192 348.1 H298 M233 516.2 H298 M281 612.6 H298"/>
+        <g class="s-legende">
+          <text x="304" y="67.2">Blue laser module</text>
+          <text x="304" y="137.5">Source disc</text>
+          <text x="304" y="196.7">Glass tube</text>
+          <text x="304" y="257.8">Disc 1</text>
+          <text x="304" y="352.1">Disc 2</text>
+          <text x="304" y="520.2">Product chamber</text>
+          <text x="304" y="616.6">Base</text>
+        </g>
+      </svg>
+      <figcaption>Schematic · not to scale</figcaption>
+    </figure>
+
+    <figure class="detail">
+      <button type="button" class="loupe" id="loupe" aria-label="Enlarge the tube diagram"><img src="../tube-detail-en.png" alt="Longitudinal section and real appearance of the tube with mirrored interior, showing the cone-shaped beam and the two quartz discs." width="926" height="1432" loading="lazy"></button>
+      <figcaption>Tube detail · click to enlarge</figcaption>
+    </figure>
+  </div>
+  <dialog class="zoom" id="zoom" aria-label="Enlarged tube diagram"><img src="../tube-detail-en.png" alt="Longitudinal section and real appearance of the tube with mirrored interior, showing the cone-shaped beam and the two quartz discs." width="926" height="1432" loading="lazy"></dialog>
+</header>
+
+<main>
+  <section class="section">
+    <div class="cadre">
+      <div>
+        <p class="surtitre">Video</p>
+        <h2>The presentation</h2>
+      </div>
+      <div class="contenu">
+        <video class="film" controls preload="metadata" playsinline poster="../affiche-en.jpg" src="../presentation-en.mp4"></video>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="cadre">
+      <div>
+        <p class="surtitre">The device</p>
+        <h2>One column, one beam, three discs</h2>
+      </div>
+      <div class="contenu">
+        <p>At the top of the column, a laser module emits blue light. The beam opens into a cone, fills a closed glass tube and passes in turn through the source disc, then two quartz discs lying flat.</p>
+        <p>Below the tube, a chamber closed by a door holds the product to be exposed. The assembly stands on a base. The beam stays fully enclosed: nothing is accessible during operation.</p>
+        <dl class="donnees">
+          <dt>Height</dt><dd>1,700 mm</dd>
+          <dt>Tube</dt><dd>Glass · Ø 130 mm · mirrored interior</dd>
+          <dt>Discs</dt><dd>Single-crystal quartz · Ø 120 mm</dd>
+          <dt>Light</dt><dd>Blue laser · cone-shaped beam</dd>
+          <dt>Stage</dt><dd>Prototype · provisional values</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="cadre">
+      <div>
+        <p class="surtitre">The method</p>
+        <h2>Process · Quantification · Validation</h2>
+      </div>
+      <div class="contenu">
+        <p>The programme rests on a quality method with three functions. It aims to make every trial measured, compared and verifiable.</p>
+        <div class="fonctions">
+          <div>
+            <h3>Process</h3>
+            <p>The partner’s formulation undergoes the PHOTONIX process, under conditions set in advance.</p>
+          </div>
+          <div>
+            <h3>Quantification</h3>
+            <p>Measurements compare the treated sample with an untreated control from the same batch.</p>
+          </div>
+          <div>
+            <h3>Validation</h3>
+            <p>Results are repeated and checked before any conclusion is drawn.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="cadre">
+      <div>
+        <p class="surtitre">Partners</p>
+        <h2>Who the programme is for</h2>
+      </div>
+      <div class="contenu">
+        <div class="publics">
+          <div>
+            <h3>Manufacturers and laboratories</h3>
+            <p>Cosmetics · food supplements · natural products. You provide a formulation, it is tested using the method above and you receive the measurements.</p>
+          </div>
+          <div>
+            <h3>Scientific collaboration</h3>
+            <p>Physicists and research laboratories. A paid feasibility study can be the first step.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="cadre">
+      <div>
+        <p class="surtitre">Project status</p>
+        <h2>A research objective</h2>
+      </div>
+      <div class="contenu">
+        <p>PHOTONIX is at the prototype stage. No results are claimed to date: the purpose of the programme is precisely to measure them with partners.</p>
+        <p>The process has been the subject of a patent: INPI patent (France) no. 0406980 of 25 June 2004.</p>
+        <p class="note">PHOTONIX is neither a medical device nor a health product.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="cadre">
+      <div>
+        <p class="surtitre">Contact</p>
+        <h2>Discuss the programme</h2>
+      </div>
+      <div class="contenu">
+        <p>Detailed technical information is shared once a confidentiality agreement has been signed.</p>
+        <div>
+          <p class="contact-nom">Jacques MISTRETTA</p>
+          <p class="contact-role">Inventor</p>
+        </div>
+        <div class="adresse">
+          <span id="adresse-mail">programme.photonix@gmail.com</span>
+          <button type="button" id="copier">Copy address</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pied">
+  <div class="cadre">PHOTONIX · Research programme · 2026</div>
+</footer>
+
+<script>
+(function () {
+  var bouton = document.getElementById('copier');
+  var adresse = document.getElementById('adresse-mail');
+  bouton.addEventListener('click', function () {
+    var fini = function (ok) {
+      bouton.textContent = ok ? 'Address copied' : 'Address selected';
+      setTimeout(function () { bouton.textContent = 'Copy address'; }, 2500);
+    };
+    var selection = function () {
+      var plage = document.createRange();
+      plage.selectNodeContents(adresse);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(plage);
+      fini(false);
+    };
+    try {
+      navigator.clipboard.writeText(adresse.textContent).then(function () { fini(true); }, selection);
+    } catch (e) { selection(); }
+  });
+})();
+(function () {
+  var b = document.getElementById('loupe'), d = document.getElementById('zoom');
+  if (!b || !d || !d.showModal) return;
+  b.addEventListener('click', function () { d.showModal(); });
+  d.addEventListener('click', function () { d.close(); });
+})();
+</script>
+</body>
+</html>
