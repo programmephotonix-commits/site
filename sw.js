@@ -1,6 +1,6 @@
 // PHOTONIX : mise en cache pour l'ouverture rapide et la consultation hors connexion (hors vidéos).
-const CACHE = 'photonix-v1';
-const FICHIERS = ['./', 'en/', 'logo-disques.png', 'tube-detail.png', 'tube-detail-en.png', 'affiche.jpg', 'affiche-en.jpg', 'icon-192.png', 'manifest.webmanifest'];
+const CACHE = 'photonix-v2';
+const FICHIERS = ['./', 'en.html', 'logo-disques.png', 'tube-detail.png', 'tube-detail-en.png', 'affiche.jpg', 'affiche-en.jpg', 'icon-192.png', 'manifest.webmanifest'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(FICHIERS)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(k => Promise.all(k.filter(n => n !== CACHE).map(n => caches.delete(n)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', e => {
